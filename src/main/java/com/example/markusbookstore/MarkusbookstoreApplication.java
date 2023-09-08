@@ -24,8 +24,8 @@ public class MarkusbookstoreApplication {
 	public CommandLineRunner bookDemo(BookRepository repository) {
 		return (args) -> {
 			log.info("save a couple of books");
-			repository.save(new Book("John", "Johnson", 1, 2, 3));
-			repository.save(new Book("Katy", "Kateson", 4, 5, 6));	
+			repository.save(new Book("Vilma", "Västerås", 2011, 112243, 3));
+			repository.save(new Book("Jelena", "Pilvilinna", 1966, 322211, 6));	
 			
 			log.info("fetch all books");
 			for (Book book : repository.findAll()) {
