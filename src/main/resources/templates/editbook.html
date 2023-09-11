@@ -7,7 +7,7 @@
 <body>
 	<h1>Lisää kirja</h1>
 	<div>
-		<form th:object="${book}" th:action="@{save}" action="#" method="post">
+		<form th:object="${book}" th:action="@{../save}" action="#" method="post">
 			<input type="hidden" id="id" th:field="*{id}" />
 		  	<label for="kirja">Kirjan nimi</label>
 			<input type="text" id="kirja" th:field="*{title}" />
