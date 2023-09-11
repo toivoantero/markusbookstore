@@ -3,10 +3,11 @@
 <head>
     <title>Kirjalista</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
 	<h1>Kirjat</h1>
-    <table>
+    <table class="table table-striped">
 		<tr>
 		    <th>Kirjailija</th>
 		    <th>Kirjan nimi</th>
@@ -19,9 +20,9 @@
     		<td th:text="${book.isbn}"></td>
     		<td th:text="${book.publicationYear}"></td>
     		<td><a th:href="@{/edit/{id}(id=${book.id})}">Muokkaa</a></td>    		
-    		<td><a th:href="@{/delete/{id}(id=${book.id})}">Poista</a></td>  		  		
+    		<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${book.id})}">Poista</a></td>  		  		
     	</tr>
      </table>
-     <a href="/add">Lisää kirja</a>   	
+     <a href="/add" class="btn btn-success">Lisää kirja</a>   	
 </body>
 </html>
