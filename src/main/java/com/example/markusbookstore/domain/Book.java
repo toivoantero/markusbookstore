@@ -16,7 +16,7 @@ public class Book {
 	private int isbn;
 	private int price;
 	
-    protected Book() {}
+    public Book() {}
 	
 	public Book(String title, String author, int publicationYear, int isbn, int price) {
 		super();
@@ -25,6 +25,12 @@ public class Book {
 		this.publicationYear = publicationYear;
 		this.isbn = isbn;
 		this.price = price;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getTitle() {
 		return title;

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Studentlist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Add student</h1>
+	<div>
+		<form th:object="${book}" th:action="@{save}" action="#" method="post">
+		  	<label for="kirja">Kirjan nimi</label>
+			<input type="text" id="kirja" th:field="*{title}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="kirjailija">Kirjailija</label>
+			<input type="text" id="kirjailija" th:field="*{author}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="isbn">ISBN</label>
+			<input type="text" id="isbn" th:field="*{isbn}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="vuosi">Julkaisuvuosi</label>
+			<input type="text" id="vuosi" th:field="*{publicationYear}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Tallenna"></input>
+		</form>
+	</div>
+</body>
+</html>
