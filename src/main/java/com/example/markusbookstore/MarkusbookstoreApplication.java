@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.markusbookstore.domain.Book;
 import com.example.markusbookstore.domain.BookRepository;
+import com.example.markusbookstore.domain.Category;
+import com.example.markusbookstore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class MarkusbookstoreApplication {
@@ -21,11 +23,14 @@ public class MarkusbookstoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository repository) {
+	public CommandLineRunner bookDemo(BookRepository repository, CategoryRepository crepository) {
 		return (args) -> {
 			log.info("save a couple of books");
-			repository.save(new Book("Musta kyynel", "Vilma Västerås", 2011, 112243, 3));
-			repository.save(new Book("Nausicaä", "Jelena Pilvilinna", 1966, 322211, 6));	
+			crepository.save(new Category("Tietokirjallisuus"));
+			crepository.save(new Category("Kaunokirjallisuus"));
+			
+			repository.save(new Book("Musta kyynel", "Vilma Västerås", 2011, 112243, 3, crepository.findByName("Kaunokirjallisuus").get(0)));
+			repository.save(new Book("Nausicaä", "Jelena Pilvilinna", 1966, 322211, 6, crepository.findByName("Tietokirjallisuus").get(0)));	
 			
 			log.info("fetch all books");
 			for (Book book : repository.findAll()) {

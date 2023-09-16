@@ -20,6 +20,13 @@
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<label for="vuosi">Julkaisuvuosi</label>
 			<input type="text" id="vuosi" th:field="*{publicationYear}" />
+			
+			<div style="clear: both; display: block; height: 10px;"></div>						
+		  	<label for="ctglist">Kategoria</label>
+			 <select id="ctglist" th:field="*{category}" class="form-control">
+       			<option th:each="hillo: ${categories}" th:value="${hillo.categoryid}" th:text="${hillo.name}"></option>
+    		</select>
+    		
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<input type="submit" value="Tallenna"></input>
 		</form>
