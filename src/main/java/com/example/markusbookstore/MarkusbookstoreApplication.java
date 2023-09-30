@@ -12,6 +12,8 @@ import com.example.markusbookstore.domain.Book;
 import com.example.markusbookstore.domain.BookRepository;
 import com.example.markusbookstore.domain.Category;
 import com.example.markusbookstore.domain.CategoryRepository;
+import com.example.markusbookstore.domain.AppUser;
+import com.example.markusbookstore.domain.AppUserRepository;
 
 @SpringBootApplication
 public class MarkusbookstoreApplication {
@@ -23,7 +25,7 @@ public class MarkusbookstoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository repository, CategoryRepository crepository) {
+	public CommandLineRunner bookDemo(BookRepository repository, CategoryRepository crepository, AppUserRepository urepository) {
 		return (args) -> {
 			log.info("save a couple of books");
 			crepository.save(new Category("Tietokirjallisuus"));
@@ -31,6 +33,11 @@ public class MarkusbookstoreApplication {
 			
 			repository.save(new Book("Musta kyynel", "Vilma Västerås", 2011, 112243, 3, crepository.findByName("Kaunokirjallisuus").get(0)));
 			repository.save(new Book("Nausicaä", "Jelena Pilvilinna", 1966, 322211, 6, crepository.findByName("Tietokirjallisuus").get(0)));	
+			
+			AppUser user1 = new AppUser("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "user@bookstore.fi", "USER");
+			AppUser user2 = new AppUser("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "user@bookstore.fi", "ADMIN");
+			urepository.save(user1);
+			urepository.save(user2);
 			
 			log.info("fetch all books");
 			for (Book book : repository.findAll()) {
